@@ -19,7 +19,7 @@ const IMAGES = {
 // --- Visual Components ---
 
 const ImageCard: React.FC<{ src: string; caption?: string }> = ({ src, caption }) => (
-  <div className="group relative w-full aspect-square max-w-[350px] md:max-w-[450px] lg:max-w-[500px] 2xl:max-w-[850px] mx-auto perspective-1000 transition-all duration-500">
+  <div className="group relative w-full aspect-square max-w-[350px] md:max-w-[450px] lg:max-w-[500px] 2xl:max-w-none 2xl:w-[45vh] 3xl:w-[50vh] mx-auto perspective-1000 transition-all duration-500">
     <div className="relative w-full h-full transform transition-transform duration-700 hover:scale-[1.02] shadow-2xl rounded-sm overflow-hidden border-[6px] md:border-[8px] 2xl:border-[16px] border-white bg-white">
       <img 
         src={src} 
@@ -103,11 +103,11 @@ const CoverScreen: React.FC<{ onStart: () => void }> = ({ onStart }) => (
 
 const Slide1Intro: React.FC = () => (
   <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-16 2xl:gap-32 h-full pt-4 md:pt-0">
-    <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl order-2 md:order-1 px-4 md:px-0">
+    <div className="flex-1 w-full max-w-lg 2xl:max-w-none 2xl:w-1/2 order-2 md:order-1 px-4 md:px-0">
       <div className="relative mb-6 md:mb-8 2xl:mb-16 text-center md:text-left">
          {/* Changed text color to dark ink (#4a403a) to be visible against bright sky background */}
          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl 2xl:text-9xl text-[#4a403a] drop-shadow-sm mb-2 2xl:mb-6 font-bold">全世界最喜欢的小妹宝</h1>
-         <p className="font-serif text-lg md:text-xl 2xl:text-4xl text-[#5c524f] italic tracking-wider">Chapter One: The Confession</p>
+         <p className="font-serif text-lg md:text-xl 2xl:text-5xl text-[#4a403a] font-semibold italic tracking-wider">Chapter One: The Confession</p>
       </div>
       
       <TextPanel>
@@ -119,7 +119,7 @@ const Slide1Intro: React.FC = () => (
         </p>
       </TextPanel>
     </div>
-    <div className="flex-1 w-full max-w-[400px] md:max-w-[500px] 2xl:max-w-[850px] order-1 md:order-2 px-6 md:px-0">
+    <div className="flex-1 w-full max-w-[400px] md:max-w-[500px] 2xl:max-w-none 2xl:w-[40%] order-1 md:order-2 px-6 md:px-0">
       <ImageCard src={IMAGES.intro} caption="Beginnings" />
     </div>
   </div>
@@ -127,10 +127,10 @@ const Slide1Intro: React.FC = () => (
 
 const Slide2Growth: React.FC = () => (
   <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 2xl:gap-40 h-full pt-4 md:pt-0">
-    <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-[850px] px-6 md:px-0">
+    <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-none 2xl:w-[40%] px-6 md:px-0">
       <ImageCard src={IMAGES.growth} caption="Growth" />
     </div>
-    <div className="flex-1 w-full max-w-xl 2xl:max-w-5xl px-4 md:px-0">
+    <div className="flex-1 w-full max-w-xl 2xl:max-w-none 2xl:w-[50%] px-4 md:px-0">
       <TextPanel title=" 鸿沟" icon={<Quote size={24} />}>
          <p>一转眼就马上要到两年咯，这两年我们经历了太多身份的转变和环境的变迁，个中辛苦你我皆知。</p>
          <p>
@@ -149,10 +149,10 @@ const Slide2Growth: React.FC = () => (
 
 const Slide3Core: React.FC = () => (
   <div className="flex flex-col md:flex-row-reverse items-center gap-6 md:gap-12 2xl:gap-40 h-full pt-4 md:pt-0">
-    <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-[850px] px-6 md:px-0">
+    <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-none 2xl:w-[40%] px-6 md:px-0">
        <ImageCard src={IMAGES.core} caption="Crystal Heart" />
     </div>
-    <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl px-4 md:px-0">
+    <div className="flex-1 w-full max-w-lg 2xl:max-w-none 2xl:w-[50%] px-4 md:px-0">
        <TextPanel title="见心" icon={<Gem size={24} />}>
           <p>分开的这段时间，我时常去读那份《看见琴宝指南》。</p>
           <p>看着看着，我看见了一颗像琉璃一样干净、清澈而敏感的心。这是世界上最宝贵的东西。</p>
@@ -173,10 +173,10 @@ const Slide3Core: React.FC = () => (
 
 const Slide4Promise: React.FC = () => (
   <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 2xl:gap-40 h-full pt-4 md:pt-0">
-    <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-[850px] px-6 md:px-0">
+    <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-none 2xl:w-[40%] px-6 md:px-0">
       <ImageCard src={IMAGES.promise} caption="Promise" />
     </div>
-    <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl px-4 md:px-0">
+    <div className="flex-1 w-full max-w-lg 2xl:max-w-none 2xl:w-[50%] px-4 md:px-0">
        <TextPanel title=" 务实" icon={<Heart size={24} />}>
           <p>
             第一次表白，也许更多是出于我想象中的爱情；但这一次，我想务实地去爱那个真实的你。
@@ -194,10 +194,10 @@ const Slide4Promise: React.FC = () => (
 
 const Slide5Action: React.FC = () => (
   <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 2xl:gap-40 h-full pt-4 md:pt-0">
-     <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-[850px] order-2 md:order-1 px-6 md:px-0">
+     <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-none 2xl:w-[40%] order-2 md:order-1 px-6 md:px-0">
         <ImageCard src={IMAGES.action} caption="Action" />
      </div>
-     <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl order-1 md:order-2 px-4 md:px-0">
+     <div className="flex-1 w-full max-w-lg 2xl:max-w-none 2xl:w-[50%] order-1 md:order-2 px-4 md:px-0">
         <TextPanel title=" 近乡" icon={<Plane size={24} />}>
            <p className="mb-2 text-sm md:text-xl 2xl:text-3xl">
              第二点，为了迎接我们的重逢，我不只想说，更想做。所谓近乡情更怯，为了让接下来的两个月成为我们最美好的回忆，我做了一些小小的规划：
@@ -225,10 +225,10 @@ const Slide5Action: React.FC = () => (
 
 const Slide6Bond: React.FC = () => (
   <div className="flex flex-col md:flex-row-reverse items-center gap-6 md:gap-12 2xl:gap-40 h-full pt-4 md:pt-0">
-     <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-[850px] px-6 md:px-0">
+     <div className="flex-1 w-full max-w-[400px] md:max-w-[480px] 2xl:max-w-none 2xl:w-[40%] px-6 md:px-0">
         <ImageCard src={IMAGES.bond} caption="Bond" />
      </div>
-     <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl px-4 md:px-0">
+     <div className="flex-1 w-full max-w-lg 2xl:max-w-none 2xl:w-[50%] px-4 md:px-0">
         <TextPanel title=" 信心！" icon={<HandHeart size={24} />}>
            <p>
              你说当初是因为看到我毛茸茸的很心动，虽然我现在也不知道妹到底最喜欢我哪里，但我知道，我们之间有很深的羁绊。
@@ -245,12 +245,12 @@ const Slide6Bond: React.FC = () => (
 );
 
 const Slide7Finale: React.FC<{ data: JournalState }> = ({ data }) => (
-  <div className="flex flex-col items-center justify-center h-full text-center max-w-4xl 2xl:max-w-7xl mx-auto gap-6 md:gap-10 2xl:gap-20 px-4">
-     <div className="w-48 h-48 md:w-80 md:h-80 2xl:w-[600px] 2xl:h-[600px] shadow-2xl rounded-full overflow-hidden border-4 2xl:border-8 border-white mx-auto shrink-0 transition-all duration-500">
+  <div className="flex flex-col items-center justify-center h-full text-center max-w-4xl 2xl:max-w-none 2xl:w-full mx-auto gap-6 md:gap-10 2xl:gap-20 px-4">
+     <div className="w-48 h-48 md:w-80 md:h-80 2xl:w-[35vw] 2xl:h-[35vw] shadow-2xl rounded-full overflow-hidden border-4 2xl:border-8 border-white mx-auto shrink-0 transition-all duration-500">
         <img src={IMAGES.finale} className="w-full h-full object-cover" alt="Finale" />
      </div>
      
-     <div className="bg-white/70 backdrop-blur-xl p-6 md:p-14 2xl:p-24 rounded-3xl shadow-2xl border border-white/60 relative w-full">
+     <div className="bg-white/70 backdrop-blur-xl p-6 md:p-14 2xl:p-24 rounded-3xl shadow-2xl border border-white/60 relative w-full 2xl:w-[60%]">
         <Sparkles className="absolute top-4 left-4 md:top-6 md:left-6 2xl:top-12 2xl:left-12 text-yellow-500 animate-spin-slow opacity-60 2xl:scale-150" size={24} />
         <Sparkles className="absolute bottom-4 right-4 md:bottom-6 md:right-6 2xl:bottom-12 2xl:right-12 text-yellow-500 animate-spin-slow opacity-60 2xl:scale-150" size={24} />
 
@@ -332,12 +332,12 @@ const App: React.FC = () => {
       <SunFlare />
       
       {/* Music plays automatically after Start is clicked due to user interaction */}
-      {started && <MusicPlayer />}
+      {started && <MusicPlayer currentSlideIndex={currentSlide} totalSlides={slides.length} />}
 
       {/* Content Container */}
       <main className={`relative z-10 w-full h-full flex flex-col justify-center items-center p-4 md:p-8 lg:p-12 2xl:p-20 overflow-hidden transition-opacity duration-1000 ${started ? 'opacity-100' : 'opacity-0'}`}>
-        {/* Adjusted Max Width for Ultrawide: 2xl:max-w-[95vw] and relaxed max-w-5xl base */}
-        <div className="w-full max-w-5xl 2xl:max-w-[95vw] h-full flex flex-col justify-center">
+        {/* Adjusted Max Width for Ultrawide: 2xl:max-w-none and use flex to distribute */}
+        <div className="w-full max-w-5xl 2xl:max-w-none 2xl:w-[90vw] h-full flex flex-col justify-center">
             <div key={currentSlide} className="animate-slideUp w-full h-full md:h-auto flex items-center justify-center">
               {slides[currentSlide].component}
             </div>

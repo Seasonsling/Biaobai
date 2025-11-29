@@ -8,23 +8,51 @@ interface Track {
   url: string;
 }
 
+interface MusicPlayerProps {
+  currentSlideIndex: number;
+  totalSlides: number;
+}
+
 const TRACKS: Track[] = [
   {
-    title: "I feel it in the wind",
-    description: "Intro",
-    url: "https://link.hhtjim.com/163/1976472443.mp3"
+    title: "Sea, You & Me",
+    description: "Summer Pockets",
+    url: "https://link.hhtjim.com/163/1311347835.mp3"
   },
   {
-    title: "帰りたくなったよ",
-    description: "Ikimonogakari",
-    url: "https://github.com/Seasonsling/pic_host/raw/refs/heads/main/%E3%81%84%E3%81%8D%E3%82%82%E3%81%AE%E3%81%8C%E3%81%8B%E3%82%8A%20-%20%E5%B8%B0%E3%82%8A%E3%81%9F%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%88.mp3"
+    title: "I feel it in the wind",
+    description: "Finale",
+    url: "https://link.hhtjim.com/163/1976472443.mp3"
   }
 ];
 
-export const MusicPlayer: React.FC = () => {
+export const MusicPlayer: React.FC<MusicPlayerProps> = ({ currentSlideIndex, totalSlides }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIdx, setCurrentTrackIdx] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Determine which track should be playing based on slide index
+  // 0 -> Main Theme (Summer Pockets)
+  // 1 -> Finale Theme (I feel it in the wind) - Only for the last slide
+  useEffect(() => {
+    const isFinale = currentSlideIndex === totalSlides - 1;
+    const targetTrackIdx = isFinale ? 1 : 0;
+
+    if (currentTrackIdx !== targetTrackIdx) {
+      setCurrentTrackIdx(targetTrackIdx);
+    }
+  }, [currentSlideIndex, totalSlides]);
+
+  // Handle track change (when currentTrackIdx updates)
+  useEffect(() => {
+    if (audioRef.current && isPlaying) {
+      // Small timeout to allow src update
+      const timer = setTimeout(() => {
+        audioRef.current?.play().catch(console.error);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [currentTrackIdx]);
 
   // Auto-play when component mounts
   useEffect(() => {
@@ -39,15 +67,6 @@ export const MusicPlayer: React.FC = () => {
     }
   }, []);
 
-  // Logic to switch first song after 30 seconds
-  const handleTimeUpdate = () => {
-    if (audioRef.current && currentTrackIdx === 0) {
-      if (audioRef.current.currentTime >= 30) {
-        nextTrack();
-      }
-    }
-  };
-
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -59,25 +78,12 @@ export const MusicPlayer: React.FC = () => {
     }
   };
 
-  const nextTrack = () => {
-    const nextIdx = (currentTrackIdx + 1) % TRACKS.length;
-    setCurrentTrackIdx(nextIdx);
-    // Add a small delay to ensure source update
-    setTimeout(() => {
-      if (audioRef.current) {
-        audioRef.current.play().then(() => setIsPlaying(true)).catch(console.error);
-      }
-    }, 50);
-  };
-
   return (
     <div className="fixed top-6 right-6 z-50 flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-1000">
       <audio 
         ref={audioRef} 
         src={TRACKS[currentTrackIdx].url} 
-        loop={currentTrackIdx !== 0} // Only loop the second song (and subsequent ones if any)
-        onEnded={nextTrack}
-        onTimeUpdate={handleTimeUpdate}
+        loop={true}
         onError={(e) => console.error("Audio error:", e)}
       />
       
@@ -94,9 +100,6 @@ export const MusicPlayer: React.FC = () => {
               {TRACKS[currentTrackIdx].title}
             </span>
          </div>
-         <button onClick={nextTrack} className="hover:bg-[#f0eadd] p-1 rounded-full text-[#8c827f] transition-colors">
-             <SkipForward size={12} />
-         </button>
       </div>
 
       {/* Main Play Button */}
