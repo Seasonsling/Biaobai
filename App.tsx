@@ -104,7 +104,7 @@ const Slide1Intro: React.FC = () => (
   <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-16 h-full pt-4 md:pt-0">
     <div className="flex-1 w-full max-w-lg order-2 md:order-1 px-4 md:px-0">
       <div className="relative mb-6 md:mb-8 text-center md:text-left">
-         <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-white drop-shadow-md mb-2 font-bold opacity-90">To: 全世界最喜欢的小妹宝</h1>
+         <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-white drop-shadow-md mb-2 font-bold opacity-90">全世界最喜欢的小妹宝</h1>
          <p className="font-serif text-lg md:text-xl text-white/90 italic tracking-wider">Chapter One: The Confession</p>
       </div>
       
@@ -113,7 +113,7 @@ const Slide1Intro: React.FC = () => (
           你好呀！二次表白了，很激动。
         </p>
         <p>
-          依然开宗明义，<span className="font-bold text-rose-600 bg-rose-50 px-1 rounded">我最喜欢你了</span>，男女之间的那种喜欢，要对你表白！
+          依然开宗明义，<span className="font-bold text-rose-600 bg-rose-50 px-1 rounded">我最喜欢你了</span>，男女之间的那种喜欢，我要正式向你表白！
         </p>
       </TextPanel>
     </div>
@@ -129,13 +129,16 @@ const Slide2Growth: React.FC = () => (
       <ImageCard src={IMAGES.growth} caption="Growth" />
     </div>
     <div className="flex-1 w-full max-w-xl px-4 md:px-0">
-      <TextPanel title="认知的鸿沟" icon={<Quote size={24} />}>
-         <p>一转眼就马上要到两年咯，两年来经历了好多故事和变故，我们也完成了大量身份的转变和环境的变迁，个中辛苦你我皆知。</p>
+      <TextPanel title="鸿沟" icon={<Quote size={24} />}>
+         <p>一转眼就马上要到两年咯，这两年我们经历了太多身份的转变和环境的变迁，个中辛苦你我皆知。</p>
          <p>
            本来以为凭我的智商和能力，谈起恋爱来岂不是从从容容、游刃有余。没想到实际上谈起来是匆匆忙忙、连滚带爬！
          </p>
+         <p>
+           只能说认知和细化的行动之间存在着巨大的鸿沟。
+         </p>
          <div className="my-4 p-4 bg-white/50 rounded-lg border-l-4 border-orange-300 italic text-[#7a6a5a]">
-           “只能说认知和细化的行动之间确实存在着鸿沟，而这也是我这两年在处理感情中学到的最关键的知识。”
+           “而如何跨越这个鸿沟，是我这两年在爱你这件事上学到的最关键的一课。”
          </div>
       </TextPanel>
     </div>
@@ -148,10 +151,12 @@ const Slide3Core: React.FC = () => (
        <ImageCard src={IMAGES.core} caption="Crystal Heart" />
     </div>
     <div className="flex-1 w-full max-w-lg px-4 md:px-0">
-       <TextPanel title="看见琉璃心" icon={<Gem size={24} />}>
-          <p>自从上一次分手后，我就时常去阅读那份《看见琴宝指南》，看着看着，我就觉得小妹宝其实是有着一颗<span className="text-indigo-600 font-bold">琉璃</span>一样干净、清澈而敏感的心的，这是世界上最宝贵的东西。</p>
+       <TextPanel title="见心" icon={<Gem size={24} />}>
+          <p>分开的这段时间，我时常去读那份《看见琴宝指南》。</p>
+          <p>看着看着，我看见了一颗像琉璃一样干净、清澈而敏感的心。这是世界上最宝贵的东西。</p>
           <p>
-            小宝的眼泪，小宝的委屈，小宝的爱吃贪玩欲，小宝的希望能够得到更多的关注和爱的需求，是那么清楚地在我眼中一点点展开，只能说乐晨琴确实是一个很纯粹的人，没有沾染什么市井和事故。
+            小宝的眼泪，小宝的委屈，小宝的爱吃贪玩欲，小宝的希望能够得到更多的关注和爱的需求，是那么清楚地在我眼中一点点展开</p>
+          <p>只能说乐晨琴确实是一个很纯粹的人，没有沾染什么市井和事故。
           </p>
           <p className="font-bold">
             你的真诚、善良、热烈、聪明、玩世，确实都是世所罕有的！
@@ -170,15 +175,15 @@ const Slide4Promise: React.FC = () => (
       <ImageCard src={IMAGES.promise} caption="Promise" />
     </div>
     <div className="flex-1 w-full max-w-lg px-4 md:px-0">
-       <TextPanel title="务实的喜欢" icon={<Heart size={24} />}>
+       <TextPanel title="务实" icon={<Heart size={24} />}>
           <p>
-            因此，如果说第一次表白，我是更多的从我自己想象中的角度来出发的话，那么这一次表白，我是希望能够更务实地来诉说对小宝的喜欢。
+            第一次表白，也许更多是出于我想象中的爱情；但这一次，我想务实地去爱那个真实的你。
           </p>
           <p>
             其实在那之前我想好几次找小宝表白了啦，一次是你10000天的时候，一次是满载着哥哥爱的两大箱物品寄送的时候。但我总觉得还不够，总觉得还是让小宝在异国他乡受了太多委屈，这些也只是杯水车薪。
           </p>
           <p>
-            所以我也做了不少务实的规划。首先第一点，肯定是必须跟妹明确，我喜欢的是你这个人，而不是想找个人结婚生子，<strong className="text-rose-600">我支持你的自由。</strong>
+            所以我也做了不少务实的规划。第一点，肯定是必须跟妹明确，我喜欢的是你这个人，而不是任何其他的因素，<strong className="text-rose-600">我想成为那个能陪你疯、能接得住你的人。</strong>
           </p>
        </TextPanel>
     </div>
@@ -191,16 +196,16 @@ const Slide5Action: React.FC = () => (
         <ImageCard src={IMAGES.action} caption="Action" />
      </div>
      <div className="flex-1 w-full max-w-lg order-1 md:order-2 px-4 md:px-0">
-        <TextPanel title="近乡情更怯" icon={<Plane size={24} />}>
+        <TextPanel title="近乡" icon={<Plane size={24} />}>
            <p className="mb-2 text-sm md:text-base">
-             第二点，接下来两个月我们将共同度过，所谓近乡情更怯，不只是你，其实我也有点心砰砰跳的紧张。但是我觉得这是我们为数不多可以好好在一起的时候，我会提前做好规划，努力让我们的重逢回首时有更多美好的回忆。
+             第二点，为了迎接我们的重逢，我不只想说，更想做。所谓近乡情更怯，为了让接下来的两个月成为我们最美好的回忆，我做了一些小小的规划：
            </p>
            <div className="grid grid-cols-1 gap-2 mb-2">
               {[
-                "给小宝准备好了定制的表白小礼物以及我这几个月收集的一些小东西作为见面礼物",
-                "狠狠打扫收拾家里并且更换新的外观设计",
+                "准备了定制的小礼物大礼包！",
+                "狠狠打扫收拾家里，换了新的外观，只等妹来！",
                 "主动承担更多的旅行规划组织以及行程安排",
-                "一起玩时表达更多的对小宝的思念和喜欢，不开心的时候主动和小宝诉说自己的情绪"
+                "我会更直白地表达想念，也会在不开心时主动沟通，不再做木头人"
               ].map((text, i) => (
                 <div key={i} className="flex items-start gap-2 p-2 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
                    <div className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 mt-1.5" />
@@ -209,7 +214,7 @@ const Slide5Action: React.FC = () => (
               ))}
            </div>
            <p className="text-sm italic opacity-80 leading-relaxed">
-             总之，既然小宝是我的瑰宝，那我就希望能尽量给小宝瑰宝级的待遇哈哈哈。当然，我有时候真的很累很累，什么都不想干，可能会影响到我们之间的事情的及时有效推动，让小宝不开心，但我会努力来调整好自己的！
+             总之，既然小宝是我的瑰宝，那我就希望能尽量给小宝瑰宝级的待遇哈哈哈。我知道生活有时会很累，但为了我们，我会让自己变得更强，不负期待！
            </p>
         </TextPanel>
      </div>
@@ -222,12 +227,12 @@ const Slide6Bond: React.FC = () => (
         <ImageCard src={IMAGES.bond} caption="Bond" />
      </div>
      <div className="flex-1 w-full max-w-lg px-4 md:px-0">
-        <TextPanel title="羁绊与信心" icon={<HandHeart size={24} />}>
+        <TextPanel title="信心！" icon={<HandHeart size={24} />}>
            <p>
-             你说你之前喜欢我，是因为看到我毛茸茸的就心动了，然后我当时就觉得，那心动结束后不就不喜欢了吗。其实我现在也不知道妹到底喜欢我哪里，似乎我给你带来的苦痛多过幸福。但我知道妹应该还是喜欢我的。
+             你说当初是因为看到我毛茸茸的很心动，虽然我现在也不知道妹到底最喜欢我哪里，但我知道，我们之间有很深的羁绊。
            </p>
            <p>
-             我相信我们现在的感情基础，是在一次次坦诚面对矛盾中建立起来的，而且也正在不断加深对对方的了解，发生矛盾龃龉时也能更说得开、发现关键问题并且更快速有效地来处理。
+             我相信我们现在的感情基础，是在一次次坦诚面对矛盾中建立起来的，而且随着对对方认知的不断加深，我们能更快地发现关键问题并处理。
            </p>
            <p className="font-bold text-[#4a403a] my-2 border-l-4 border-rose-400 pl-4 py-1 bg-rose-50/50">
              “因此，我比过去任何时候都有信心，也有决心，去维护好这段关系。”
@@ -248,11 +253,12 @@ const Slide7Finale: React.FC<{ data: JournalState }> = ({ data }) => (
         <Sparkles className="absolute bottom-4 right-4 md:bottom-6 md:right-6 text-yellow-500 animate-spin-slow opacity-60" size={24} />
 
         <h1 className="text-3xl md:text-5xl font-serif font-bold text-[#4a403a] mb-4 md:mb-6 tracking-tight">
-           Welcome Home.
+          欢迎回家，女朋友！
         </h1>
         <div className="text-lg md:text-xl font-serif text-[#5c524f] mb-6 md:mb-8 leading-relaxed space-y-4">
-           <p>表白礼物和回家后的小惊喜已经准备好咯，算是小贿赂。</p>
-           <p>那如果小妹宝回家前答应了我的表白的话，那是不是我可以到时候说一句：欢迎回家呢。</p>
+           <p>表白礼物和回家后的小惊喜已经就绪咯，算是给“领导”的小贿赂。</p>
+           <p>如果小妹宝愿意在回家前答应我的表白……嘿嘿</p>
+           <p>那我想到时候就能牵着你的手，底气十足地说一句：</p>
         </div>
         
         <div className="border-t border-[#a89f91]/30 pt-4 md:pt-6 mt-4 md:mt-6 text-right">
