@@ -131,7 +131,7 @@ const Slide2Growth: React.FC = () => (
       <ImageCard src={IMAGES.growth} caption="Growth" />
     </div>
     <div className="flex-1 w-full max-w-xl 2xl:max-w-5xl px-4 md:px-0">
-      <TextPanel title="鸿沟" icon={<Quote size={24} />}>
+      <TextPanel title=" 鸿沟" icon={<Quote size={24} />}>
          <p>一转眼就马上要到两年咯，这两年我们经历了太多身份的转变和环境的变迁，个中辛苦你我皆知。</p>
          <p>
            本来以为凭我的智商和能力，谈起恋爱来岂不是从从容容、游刃有余。没想到实际上谈起来是匆匆忙忙、连滚带爬！
@@ -177,7 +177,7 @@ const Slide4Promise: React.FC = () => (
       <ImageCard src={IMAGES.promise} caption="Promise" />
     </div>
     <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl px-4 md:px-0">
-       <TextPanel title="务实" icon={<Heart size={24} />}>
+       <TextPanel title=" 务实" icon={<Heart size={24} />}>
           <p>
             第一次表白，也许更多是出于我想象中的爱情；但这一次，我想务实地去爱那个真实的你。
           </p>
@@ -198,7 +198,7 @@ const Slide5Action: React.FC = () => (
         <ImageCard src={IMAGES.action} caption="Action" />
      </div>
      <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl order-1 md:order-2 px-4 md:px-0">
-        <TextPanel title="近乡" icon={<Plane size={24} />}>
+        <TextPanel title=" 近乡" icon={<Plane size={24} />}>
            <p className="mb-2 text-sm md:text-xl 2xl:text-3xl">
              第二点，为了迎接我们的重逢，我不只想说，更想做。所谓近乡情更怯，为了让接下来的两个月成为我们最美好的回忆，我做了一些小小的规划：
            </p>
@@ -229,7 +229,7 @@ const Slide6Bond: React.FC = () => (
         <ImageCard src={IMAGES.bond} caption="Bond" />
      </div>
      <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl px-4 md:px-0">
-        <TextPanel title="信心！" icon={<HandHeart size={24} />}>
+        <TextPanel title=" 信心！" icon={<HandHeart size={24} />}>
            <p>
              你说当初是因为看到我毛茸茸的很心动，虽然我现在也不知道妹到底最喜欢我哪里，但我知道，我们之间有很深的羁绊。
            </p>
