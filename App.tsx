@@ -35,18 +35,19 @@ const ImageCard: React.FC<{ src: string; caption?: string }> = ({ src, caption }
 );
 
 const TextPanel: React.FC<{ children: React.ReactNode; title?: string; icon?: React.ReactNode }> = ({ children, title, icon }) => (
-  <div className="relative w-full overflow-hidden rounded-2xl bg-white/60 backdrop-blur-md border border-white/50 p-6 md:p-8 lg:p-10 2xl:p-16 shadow-lg text-[#5c524f] flex flex-col max-h-[50vh] md:max-h-none 2xl:h-auto 2xl:justify-center">
+  <div className="relative w-full overflow-hidden rounded-2xl bg-white/60 backdrop-blur-md border border-white/50 p-6 md:p-8 lg:p-10 2xl:p-20 shadow-lg text-[#5c524f] flex flex-col max-h-[60vh] md:max-h-[70vh] 2xl:h-auto 2xl:max-h-[85vh] 2xl:justify-center">
     {/* Decorative lighting inside card */}
     <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 2xl:w-64 2xl:h-64 bg-gradient-to-br from-rose-200 to-transparent blur-2xl opacity-50 rounded-full pointer-events-none"></div>
     
     {(title || icon) && (
-      <div className="flex items-center gap-3 mb-4 md:mb-6 2xl:mb-10 border-b border-[#a89f91]/20 pb-4 shrink-0">
+      <div className="flex items-center gap-3 mb-6 md:mb-8 2xl:mb-16 border-b border-[#a89f91]/20 pb-4 md:pb-6 shrink-0">
         {icon && <div className="text-rose-500 2xl:scale-150 origin-left">{icon}</div>}
-        {title && <h2 className="font-serif text-xl md:text-2xl lg:text-3xl 2xl:text-5xl text-[#4a403a] font-bold tracking-wide">{title}</h2>}
+        {title && <h2 className="font-serif text-xl md:text-2xl lg:text-3xl 2xl:text-6xl text-[#4a403a] font-bold tracking-wide">{title}</h2>}
       </div>
     )}
     
-    <div className="font-serif text-base md:text-lg 2xl:text-3xl leading-relaxed space-y-4 2xl:space-y-8 relative z-10 overflow-y-auto pr-2 custom-scrollbar">
+    {/* Typography Update: Increased leading (line-height) and space-y (paragraph spacing) */}
+    <div className="font-serif text-base md:text-xl 2xl:text-4xl text-[#4a403a] leading-loose md:leading-loose 2xl:leading-[2.2] tracking-wide space-y-6 md:space-y-8 2xl:space-y-16 relative z-10 overflow-y-auto pr-4 custom-scrollbar">
       {children}
     </div>
   </div>
@@ -138,7 +139,7 @@ const Slide2Growth: React.FC = () => (
          <p>
            只能说认知和细化的行动之间存在着巨大的鸿沟。
          </p>
-         <div className="my-4 2xl:my-8 p-4 2xl:p-8 bg-white/50 rounded-lg border-l-4 border-orange-300 italic text-[#7a6a5a]">
+         <div className="my-6 2xl:my-12 p-4 2xl:p-8 bg-white/50 rounded-lg border-l-4 border-orange-300 italic text-[#7a6a5a]">
            “而如何跨越这个鸿沟，是我这两年在爱你这件事上学到的最关键的一课。”
          </div>
       </TextPanel>
@@ -198,23 +199,23 @@ const Slide5Action: React.FC = () => (
      </div>
      <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl order-1 md:order-2 px-4 md:px-0">
         <TextPanel title="近乡" icon={<Plane size={24} />}>
-           <p className="mb-2 text-sm md:text-base 2xl:text-3xl">
+           <p className="mb-2 text-sm md:text-xl 2xl:text-3xl">
              第二点，为了迎接我们的重逢，我不只想说，更想做。所谓近乡情更怯，为了让接下来的两个月成为我们最美好的回忆，我做了一些小小的规划：
            </p>
-           <div className="grid grid-cols-1 gap-2 2xl:gap-4 mb-2">
+           <div className="grid grid-cols-1 gap-4 2xl:gap-10 mb-2">
               {[
                 "准备了定制的小礼物大礼包！",
                 "狠狠打扫收拾家里，换了新的外观，只等妹来！",
                 "主动承担更多的旅行规划组织以及行程安排",
                 "我会更直白地表达想念，也会在不开心时主动沟通，不再做木头人"
               ].map((text, i) => (
-                <div key={i} className="flex items-start gap-2 p-2 2xl:p-4 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
-                   <div className="w-1.5 2xl:w-3 h-1.5 2xl:h-3 rounded-full bg-rose-400 shrink-0 mt-1.5 2xl:mt-3" />
-                   <span className="text-xs md:text-sm 2xl:text-2xl leading-snug">{text}</span>
+                <div key={i} className="flex items-start gap-4 p-3 2xl:p-6 bg-white/40 rounded-lg hover:bg-white/60 transition-colors">
+                   <div className="w-1.5 2xl:w-3 h-1.5 2xl:h-3 rounded-full bg-rose-400 shrink-0 mt-2 2xl:mt-4" />
+                   <span className="text-sm md:text-base 2xl:text-2xl leading-relaxed">{text}</span>
                 </div>
               ))}
            </div>
-           <p className="text-sm 2xl:text-2xl italic opacity-80 leading-relaxed">
+           <p className="text-sm 2xl:text-2xl italic opacity-80 leading-loose">
              总之，既然小宝是我的瑰宝，那我就希望能尽量给小宝瑰宝级的待遇哈哈哈。我知道生活有时会很累，但为了我们，我会让自己变得更强，不负期待！
            </p>
         </TextPanel>
@@ -235,7 +236,7 @@ const Slide6Bond: React.FC = () => (
            <p>
              我相信我们现在的感情基础，是在一次次坦诚面对矛盾中建立起来的，而且随着对对方认知的不断加深，我们能更快地发现关键问题并处理。
            </p>
-           <p className="font-bold text-[#4a403a] my-2 border-l-4 border-rose-400 pl-4 py-1 bg-rose-50/50">
+           <p className="font-bold text-[#4a403a] my-4 2xl:my-8 border-l-4 border-rose-400 pl-4 py-2 bg-rose-50/50">
              “因此，我比过去任何时候都有信心，也有决心，去维护好这段关系。”
            </p>
         </TextPanel>
@@ -256,7 +257,7 @@ const Slide7Finale: React.FC<{ data: JournalState }> = ({ data }) => (
         <h1 className="text-3xl md:text-5xl 2xl:text-8xl font-serif font-bold text-[#4a403a] mb-4 md:mb-6 2xl:mb-12 tracking-tight">
           欢迎回家，女朋友！
         </h1>
-        <div className="text-lg md:text-xl 2xl:text-4xl font-serif text-[#5c524f] mb-6 md:mb-8 2xl:mb-16 leading-relaxed space-y-4 2xl:space-y-8">
+        <div className="text-lg md:text-xl 2xl:text-4xl font-serif text-[#5c524f] mb-6 md:mb-8 2xl:mb-16 leading-loose 2xl:leading-[2.2] space-y-4 2xl:space-y-8">
            <p>表白礼物和回家后的小惊喜已经就绪咯，算是给“领导”的小贿赂。</p>
            <p>如果小妹宝愿意在回家前答应我的表白……嘿嘿</p>
            <p>那我想到时候就能牵着你的手，底气十足地说一句：</p>
