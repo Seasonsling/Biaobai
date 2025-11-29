@@ -104,8 +104,9 @@ const Slide1Intro: React.FC = () => (
   <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-16 2xl:gap-32 h-full pt-4 md:pt-0">
     <div className="flex-1 w-full max-w-lg 2xl:max-w-5xl order-2 md:order-1 px-4 md:px-0">
       <div className="relative mb-6 md:mb-8 2xl:mb-16 text-center md:text-left">
-         <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl 2xl:text-9xl text-white drop-shadow-md mb-2 2xl:mb-6 font-bold opacity-90">全世界最喜欢的小妹宝</h1>
-         <p className="font-serif text-lg md:text-xl 2xl:text-4xl text-white/90 italic tracking-wider">Chapter One: The Confession</p>
+         {/* Changed text color to dark ink (#4a403a) to be visible against bright sky background */}
+         <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl 2xl:text-9xl text-[#4a403a] drop-shadow-sm mb-2 2xl:mb-6 font-bold">全世界最喜欢的小妹宝</h1>
+         <p className="font-serif text-lg md:text-xl 2xl:text-4xl text-[#5c524f] italic tracking-wider">Chapter One: The Confession</p>
       </div>
       
       <TextPanel>
