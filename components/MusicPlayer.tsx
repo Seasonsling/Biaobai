@@ -10,14 +10,14 @@ interface Track {
 
 const TRACKS: Track[] = [
   {
-    title: "Gymnopedie No. 1",
-    description: "Erik Satie - Gentle Piano",
-    url: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=gymnopedie-no-1-satie-6512.mp3"
+    title: "I feel it in the wind",
+    description: "Intro",
+    url: "https://link.hhtjim.com/163/1976472443.mp3"
   },
   {
-    title: "River of Love",
-    description: "Romantic Melodies",
-    url: "https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8c8a73467.mp3?filename=piano-moment-11176.mp3"
+    title: "帰りたくなったよ",
+    description: "Ikimonogakari",
+    url: "https://github.com/Seasonsling/pic_host/raw/refs/heads/main/%E3%81%84%E3%81%8D%E3%82%82%E3%81%AE%E3%81%8C%E3%81%8B%E3%82%8A%20-%20%E5%B8%B0%E3%82%8A%E3%81%9F%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%88.mp3"
   }
 ];
 
@@ -26,7 +26,7 @@ export const MusicPlayer: React.FC = () => {
   const [currentTrackIdx, setCurrentTrackIdx] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Auto-play when component mounts (which happens after "Start" click)
+  // Auto-play when component mounts
   useEffect(() => {
     if (audioRef.current) {
         audioRef.current.volume = 0.4;
@@ -38,6 +38,15 @@ export const MusicPlayer: React.FC = () => {
         });
     }
   }, []);
+
+  // Logic to switch first song after 30 seconds
+  const handleTimeUpdate = () => {
+    if (audioRef.current && currentTrackIdx === 0) {
+      if (audioRef.current.currentTime >= 30) {
+        nextTrack();
+      }
+    }
+  };
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -53,11 +62,12 @@ export const MusicPlayer: React.FC = () => {
   const nextTrack = () => {
     const nextIdx = (currentTrackIdx + 1) % TRACKS.length;
     setCurrentTrackIdx(nextIdx);
+    // Add a small delay to ensure source update
     setTimeout(() => {
       if (audioRef.current) {
         audioRef.current.play().then(() => setIsPlaying(true)).catch(console.error);
       }
-    }, 100);
+    }, 50);
   };
 
   return (
@@ -65,8 +75,9 @@ export const MusicPlayer: React.FC = () => {
       <audio 
         ref={audioRef} 
         src={TRACKS[currentTrackIdx].url} 
-        loop 
+        loop={currentTrackIdx !== 0} // Only loop the second song (and subsequent ones if any)
         onEnded={nextTrack}
+        onTimeUpdate={handleTimeUpdate}
         onError={(e) => console.error("Audio error:", e)}
       />
       
