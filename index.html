@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Heartfelt - Confession Journal</title>
+    <title>For 小妹宝 - The Confession</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,10 +39,6 @@
         font-family: 'Dancing Script', cursive;
       }
       
-      .doodle-font {
-        font-family: 'Homemade Apple', cursive;
-      }
-
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 4px;
@@ -53,34 +49,24 @@
       }
       
       /* Animation Utilities */
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-      @keyframes breathe {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.02); }
-      }
       @keyframes spin-slow {
         from { transform: rotate(0deg); }
         to { transform: rotate(360deg); }
       }
-
-      .animate-float { animation: float 6s ease-in-out infinite; }
-      .animate-breathe { animation: breathe 8s ease-in-out infinite; }
       .animate-spin-slow { animation: spin-slow 12s linear infinite; }
       
-      /* Utility Classes for Scrapbook Look */
-      .torn-edge {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 2% 98%, 0% 96%, 2% 94%, 0% 92%, 2% 90%, 0% 88%, 2% 86%, 0% 84%, 2% 82%, 0% 80%, 2% 78%, 0% 76%, 2% 74%, 0% 72%, 2% 70%, 0% 68%, 2% 66%, 0% 64%, 2% 62%, 0% 60%, 2% 58%, 0% 56%, 2% 54%, 0% 52%, 2% 50%, 0% 48%, 2% 46%, 0% 44%, 2% 42%, 0% 40%, 2% 38%, 0% 36%, 2% 34%, 0% 32%, 2% 30%, 0% 28%, 2% 26%, 0% 24%, 2% 22%, 0% 20%, 2% 18%, 0% 16%, 2% 14%, 0% 12%, 2% 10%, 0% 8%, 2% 6%, 0% 4%, 2% 2%);
+      .perspective-1000 {
+        perspective: 1000px;
       }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
   }
@@ -89,5 +75,6 @@
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

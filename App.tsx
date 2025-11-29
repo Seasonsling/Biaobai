@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, Heart, Sparkles, Gem, Plane, HandHeart, Quote } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Heart, Sparkles, Gem, Plane, HandHeart, Quote, BookOpen } from 'lucide-react';
 import { MusicPlayer } from './components/MusicPlayer';
-import { AIAssistant } from './components/AIAssistant';
 import { JournalState } from './types';
 
 // --- Constants ---
@@ -57,6 +56,45 @@ const SunFlare = () => (
   <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-20 overflow-hidden">
      <div className="absolute top-[-20%] right-[-10%] w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-radial-gradient from-orange-100/30 to-transparent blur-3xl opacity-60 animate-pulse-slow"></div>
      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-radial-gradient from-rose-100/20 to-transparent blur-3xl opacity-40"></div>
+  </div>
+);
+
+// --- Cover Screen (Start Page) ---
+
+const CoverScreen: React.FC<{ onStart: () => void }> = ({ onStart }) => (
+  <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#f2efe9] overflow-hidden">
+    {/* Background Image blurred */}
+    <div 
+      className="absolute inset-0 bg-cover bg-center blur-md opacity-60 scale-110"
+      style={{ backgroundImage: `url(${IMAGES.intro})` }}
+    />
+    <div className="absolute inset-0 bg-white/30 mix-blend-overlay"></div>
+    <div className="texture-overlay opacity-30"></div>
+    
+    {/* Card */}
+    <div className="relative z-10 flex flex-col items-center p-8 md:p-14 bg-white/80 backdrop-blur-xl rounded-sm shadow-2xl border-8 border-white max-w-md w-[90%] text-center animate-in fade-in zoom-in duration-1000">
+      <div className="mb-6 text-rose-500">
+        <Heart size={48} className="fill-rose-500 animate-pulse-slow" />
+      </div>
+      <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3 text-[#4a403a] tracking-tight">The Confession</h1>
+      <div className="w-16 h-1 bg-[#a89f91] mb-6 opacity-30"></div>
+      <p className="font-serif italic text-lg md:text-xl mb-10 text-stone-600">To: 小妹宝</p>
+      
+      <button 
+        onClick={onStart} 
+        className="group relative px-8 py-3 bg-[#4a403a] text-white font-serif tracking-widest uppercase text-sm md:text-base rounded-sm shadow-xl hover:bg-[#2c2622] transition-all hover:scale-105 active:scale-95 overflow-hidden"
+      >
+        <span className="relative z-10 flex items-center gap-3">
+          <BookOpen size={18} />
+          Open Journal
+        </span>
+        <div className="absolute inset-0 bg-rose-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out -z-0"></div>
+      </button>
+    </div>
+    
+    <div className="absolute bottom-8 text-stone-500 text-xs font-serif opacity-60 tracking-widest">
+      DESIGNED WITH LOVE
+    </div>
   </div>
 );
 
@@ -229,6 +267,7 @@ const Slide7Finale: React.FC<{ data: JournalState }> = ({ data }) => (
 // --- Main App ---
 
 const App: React.FC = () => {
+  const [started, setStarted] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [journalData] = useState<JournalState>({
     recipientName: '小妹宝',
@@ -250,16 +289,20 @@ const App: React.FC = () => {
   const prevSlide = () => setCurrentSlide(p => Math.max(p - 1, 0));
 
   useEffect(() => {
+    if (!started) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [started]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden font-sans text-stone-800 bg-[#f2efe9]">
+      {/* Cover Screen */}
+      {!started && <CoverScreen onStart={() => setStarted(true)} />}
+
       {/* Dynamic Background */}
       {slides.map((slide, index) => (
         <div 
@@ -279,11 +322,12 @@ const App: React.FC = () => {
 
       <div className="texture-overlay opacity-20"></div>
       <SunFlare />
-      <MusicPlayer />
-      <AIAssistant onSelect={() => {}} />
+      
+      {/* Music plays automatically after Start is clicked due to user interaction */}
+      {started && <MusicPlayer />}
 
       {/* Content Container */}
-      <main className="relative z-10 w-full h-full flex flex-col justify-center items-center p-4 md:p-8 lg:p-12 overflow-hidden">
+      <main className={`relative z-10 w-full h-full flex flex-col justify-center items-center p-4 md:p-8 lg:p-12 overflow-hidden transition-opacity duration-1000 ${started ? 'opacity-100' : 'opacity-0'}`}>
         <div className="w-full max-w-[1400px] h-full flex flex-col justify-center">
             <div key={currentSlide} className="animate-slideUp w-full h-full md:h-auto flex items-center justify-center">
               {slides[currentSlide].component}
@@ -292,7 +336,7 @@ const App: React.FC = () => {
       </main>
 
       {/* Navigation */}
-      <div className="fixed bottom-4 md:bottom-8 left-0 right-0 z-50 flex justify-center items-center gap-4 md:gap-6 pointer-events-none">
+      <div className={`fixed bottom-4 md:bottom-8 left-0 right-0 z-50 flex justify-center items-center gap-4 md:gap-6 pointer-events-none transition-opacity duration-1000 ${started ? 'opacity-100' : 'opacity-0'}`}>
          <button 
            onClick={prevSlide}
            disabled={currentSlide === 0}

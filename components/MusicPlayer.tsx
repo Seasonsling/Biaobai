@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Volume2, VolumeX, SkipForward, Disc, Music2 } from 'lucide-react';
 
@@ -25,19 +26,25 @@ export const MusicPlayer: React.FC = () => {
   const [currentTrackIdx, setCurrentTrackIdx] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Auto-play when component mounts (which happens after "Start" click)
+  useEffect(() => {
+    if (audioRef.current) {
+        audioRef.current.volume = 0.4;
+        audioRef.current.play().then(() => {
+            setIsPlaying(true);
+        }).catch(e => {
+            console.log("Auto-play blocked, waiting for interaction", e);
+            setIsPlaying(false);
+        });
+    }
+  }, []);
+
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            console.error("Playback failed:", error);
-            // Auto-pause UI if playback fails (e.g. user hasn't interacted yet)
-            setIsPlaying(false);
-          });
-        }
+        audioRef.current.play().catch(console.error);
       }
       setIsPlaying(!isPlaying);
     }
@@ -46,22 +53,15 @@ export const MusicPlayer: React.FC = () => {
   const nextTrack = () => {
     const nextIdx = (currentTrackIdx + 1) % TRACKS.length;
     setCurrentTrackIdx(nextIdx);
-    // Allow state update to propagate before playing
     setTimeout(() => {
-      if (isPlaying && audioRef.current) {
-        audioRef.current.play().catch(console.error);
+      if (audioRef.current) {
+        audioRef.current.play().then(() => setIsPlaying(true)).catch(console.error);
       }
     }, 100);
   };
 
-  useEffect(() => {
-    if (audioRef.current) {
-        audioRef.current.volume = 0.4;
-    }
-  }, []);
-
   return (
-    <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
+    <div className="fixed top-6 right-6 z-50 flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-1000">
       <audio 
         ref={audioRef} 
         src={TRACKS[currentTrackIdx].url} 
